@@ -13,7 +13,11 @@ class SplitDescription():
         string2 = lists[1]
         # print(string2)
         Year1, self.Country, self.Category = string2.split('/')[-3:]
-        self.Year = Year1.replace(' ', '')
+        self.Year = ''
+        for char in Year1:
+            if char.isdigit():
+                self.Year += char
+        # print(self.Year)
         # self.Country = Country1.replace(' ', '')
         # self.Category = Category1.replace(' ', '')
 
