@@ -9,7 +9,7 @@ from lxml import etree
 import xlwt
 from MyDescription import SplitDescription
 
-class DoubanFilesTop250():
+class DoubanFilmsTop250():
     def __init__(self):
         self.header = {
             'User-Agent':
@@ -45,18 +45,9 @@ class DoubanFilesTop250():
         li_lists = selector.xpath('//ol[@class="grid_view"]/li')
         # print(li_lists)
         for list in li_lists:
-            # print(list.xpath('//div[@class="hd"]/a/span[1]/text()'))
-            # print('_____________________________________________________')
-            # print(list.xpath('div/div[2]/div[@class="hd"]/a/span[1]/text()'))  # title
-            # print(list.xpath('div/div[2]/div[@class="hd"]/a/@href'))  # url
-            # print(list.xpath('div/div[2]/div[@class="bd"]/p[1]/text()'))  #! description 后期可以处理一下这个文本
-            # print(list.xpath('div/div[2]/div[@class="bd"]/div[1]/span[2]/text()'))  # scores
-            # print(list.xpath('div/div[2]/div[@class="bd"]/div[1]/span[4]/text()'))  # comments count
-            # print(list.xpath('div/div[2]/div[@class="bd"]/p[2]/span/text()'))  # quote
-
             title = list.xpath('div/div[2]/div[@class="hd"]/a/span[1]/text()')  # title
             film_url = list.xpath('div/div[2]/div[@class="hd"]/a/@href')  # url
-            description = list.xpath('div/div[2]/div[@class="bd"]/p[1]/text()')  #! description 后期可以处理一下这个文本
+            description = list.xpath('div/div[2]/div[@class="bd"]/p[1]/text()')  # description
             scores = list.xpath('div/div[2]/div[@class="bd"]/div[1]/span[2]/text()')  # scores
             comments_count = list.xpath('div/div[2]/div[@class="bd"]/div[1]/span[4]/text()')  # comments count
             quote = list.xpath('div/div[2]/div[@class="bd"]/p[2]/span/text()')  # quote
@@ -82,4 +73,4 @@ class DoubanFilesTop250():
             self.film_count = self.film_count + 1
 
 if __name__ == '__main__':
-    Crawl = DoubanFilesTop250()
+    Crawl = DoubanFilmsTop250()
